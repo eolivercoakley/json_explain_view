@@ -1,0 +1,40 @@
+[
+  {
+    "description": "Evaluating limit.",
+    "duration(ms)": 0.095173,
+    "sub_tasks": [
+      {
+        "description": "Evaluating table.",
+        "duration(ms)": 0.07847,
+        "sub_tasks": [
+          {
+            "description": "Evaluating db.",
+            "duration(ms)": 0.052587,
+            "sub_tasks": [
+              {
+                "description": "Evaluating datum.",
+                "duration(ms)": 0.000471,
+                "sub_tasks": []
+              }
+            ]
+          },
+          {
+            "description": "Evaluating datum.",
+            "duration(ms)": 0.000217,
+            "sub_tasks": []
+          }
+        ]
+      },
+      {
+        "description": "Evaluating datum.",
+        "duration(ms)": 0.000169,
+        "sub_tasks": []
+      }
+    ]
+  },
+  {
+    "description": "Slicing eagerly.",
+    "mean_duration(ms)": 1.391965,
+    "n_samples": 1
+  }
+]
