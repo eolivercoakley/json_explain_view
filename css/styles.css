@@ -1,4 +1,4 @@
-/*.explain_node{
+.explain_node{
 	position: relative;	
 	width:250px;
 }
@@ -9,10 +9,11 @@
 	background-color: #cccccc;
 	border-radius: 10px;
 	padding: 5px;
-}*/
+}
 
 .resize_image{
 	width:64px;
 	height:64px;
 	background-color: #333333;
 }
+

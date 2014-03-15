@@ -24,15 +24,14 @@ var buildTree = function(_json){
 	var ul_element = document.createElement('ul');
 	ul_element.className = "media-list";	
 	console.log(ul_element);	
-	ul_element.appendChild(buildNode(_json,0,0));
+	buildNode(ul_element,_json,0,0);
 	document.body.appendChild(ul_element);
 };
 
 //_node the node containing elements and the array of subnodes to build out
 //depth_level (used for determining spacing)
 //row_number
-var buildNode = function(_node, depth_level, row){
-	
+
 	/**
 	 * Bootstrap Structure:
 	 * 
@@ -44,6 +43,9 @@ var buildNode = function(_node, depth_level, row){
 	 * ------Heading(text)
 	 * ------Media Element(More)
 	 */
+/**
+var buildNode = function(_node, depth_level, row){
+	
 	
 	
 	//Build variables
@@ -81,7 +83,54 @@ var buildNode = function(_node, depth_level, row){
 	node.insertBefore(node_media_body,node.firstChild);
 	node.insertBefore(node_resize_link,node.firstChild);	
 	return node;	
+};*/
+
+
+//_node the node containing elements and the array of subnodes to build out
+//depth_level (used for determining spacing)
+//row_number
+//Basic build function method that generates and appends nodes
+function buildNode(parent_node, _jsonData, depth_level, row){	
+		
+	//Build variables
+	if(!Array.isArray(_jsonData)){
+		var node = document.createElement('div'); //New node object
+		var node_text = document.createElement('h4'); //New node object
+		var row_val = 0;
+		
+		//Set classnames of divs
+		node_text.className = "explain_node_text";	
+		node_text.style.left = (depth_level * 50) + "px";		
+	}
+	else{
+		var node = parent_node;
+		depth_level--;
+	}
+	
+	console.log(_jsonData);
+	
+	for(var key in _jsonData){
+		if(typeof _jsonData[key] === "object"){
+			if(typeof node_text != "undefined"){
+				node_text.innerHTML += key + ": [...] " + "<br>";					
+			}
+			if(!Array.isArray(_jsonData[key]) || (Array.isArray(_jsonData[key]) && _jsonData[key].length > 0)){
+				buildNode(node,_jsonData[key], (depth_level+1), key);
+			}
+		}
+		else{
+			node[key] = _jsonData[key];
+			node_text.innerHTML += key + ": " + _jsonData[key] + "<br>";	
+		}
+	}
+	if(!Array.isArray(_jsonData)){		
+		node_text.innerHTML += "depth_level" + ": " + depth_level + "<br>";	
+		node.insertBefore(node_text,node.firstChild);
+		parent_node.appendChild(node);
+	}
 };
+
+
 
 //Init function
 window.onload = function(){
