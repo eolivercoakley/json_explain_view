@@ -5,10 +5,13 @@
 
 .explain_node_text{
 	overflow: hidden;
-	position:relative;
+	position:absolute;
 	background-color: #cccccc;
 	border-radius: 10px;
 	padding: 5px;
+	width: 200px;
+	float: left;
+	margin-right:10px;
 }
 
 .resize_image{
